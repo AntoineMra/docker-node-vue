@@ -3,23 +3,26 @@ services:
   database:
     image: postgres:latest
     environment:
-      - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=seo
+      - POSTGRES_PASSWORD=changeMe!
     ports:
       - "5432:5432"
     volumes:
-      - seodata:/var/lib/postgresql/data
-  server:
-    build: ./server
-    ports:
-      - "7000:7000"
+      - pgdata:/var/lib/postgresql/data
+  api:
+    build: ./api
     volumes:
-      - ./server:/usr/src/server/
-      - /usr/src/server/node_modules
+      - ./api:/usr/src/api/
     links:
       - database
     depends_on:
       - database
+  nginx:
+    restart: always
+    build: ./nginx
+    ports:
+      - '3050:80'
+    depends_on:
+      - api
 volumes:
-  seodata:
+  pgdata:
     

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "dev": "NODE_ENV=development nodemon -L server/index.js",
     "test": "NODE_ENV=test nodemon -L server/index.js"
   },

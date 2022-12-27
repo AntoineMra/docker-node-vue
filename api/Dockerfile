@@ -3,5 +3,5 @@ WORKDIR /usr/src/server
 COPY package.json ./
 RUN npm install
 COPY . .
-EXPOSE 7000
+EXPOSE 5000
 CMD [ "npm", "run", "dev" ]
