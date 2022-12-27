@@ -1,5 +1,15 @@
 # Template Docker Node Vue
 
+## What is it in there for me ?
+
+- PostgresSQL Database
+- Vue 3 Starter App Based On [CREATE-VUE](https://github.com/vuejs/create-vue) 
+- An Express Api boilerplate with specified dependecies
+- Nginx based Web Server
+- Github Actions to automate CI
+- Default Recommanded Branch Protection
+
+
 # Installation guide
 
 ## What you need
@@ -9,29 +19,8 @@
 | Docker             |
 | Docker Compose     |
 
-## Start the database with Docker
+## Start the containers with Docker
 
 ```sh
-docker-compose up
-```
-
-## Start the express Api
-
-```sh
-cd api/
-npm install
-npm run dev
-```
-
-## Install the client
-
-```sh
-cd client/
-npm install
-```
-
-## Start the client
-
-```sh
-npm start
+docker-compose up --build
 ```
