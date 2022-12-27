@@ -1,6 +1,6 @@
 # Template Docker Node Vue
 
-## What is it in there for me ?
+## what's in it for me ?
 
 - PostgresSQL Database
 - Vue 3 Starter App Based On [CREATE-VUE](https://github.com/vuejs/create-vue) 
