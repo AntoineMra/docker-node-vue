@@ -26,11 +26,7 @@ const options = {
 
 // Select the env file
 
-if (process.env.NODE_ENV === 'development') {
-  dotenv.config({ path: process.cwd() + '/config/.env.dist.development' })
-} else if (process.env.NODE_ENV === 'test') {
-  dotenv.config()
-}
+dotenv.config()
 const PORT = process.env.API_PORT || 5000
 
 app.listen(PORT, () => {
@@ -40,7 +36,7 @@ app.listen(PORT, () => {
 // Database connection
 const user = process.env.POSTGRES_USER
 const pwd = process.env.POSTGRES_PASSWORD
-const pg_uri = process.env.postgres_URI
+const pg_uri = process.env.POSTGRES_URI
 const db = process.env.POSTGRES_DB
 const sequelize = new Sequelize(`postgres://${user}:${pwd}@${pg_uri}/${db}`)
 
