@@ -2,24 +2,44 @@ version: '3'
 services:
   database:
     image: postgres:latest
-    environment:
-      - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=seo
+    restart: always
+    env_file:
+      - api/.env.dist
     ports:
       - "5432:5432"
     volumes:
-      - seodata:/var/lib/postgresql/data
-  server:
-    build: ./server
-    ports:
-      - "7000:7000"
+      - pgdata:/var/lib/postgresql/data
+  api:
+    build: ./api
+    env_file:
+      - api/.env.dist
     volumes:
-      - ./server:/usr/src/server/
-      - /usr/src/server/node_modules
+      - ./api:/usr/src/api/
+      - /usr/src/api/node_modules
     links:
       - database
     depends_on:
       - database
+  client:
+    build: ./client
+    env_file:
+      - ./client/.env
+    volumes:
+      - ./client:/usr/src/client
+      - /usr/src/client/node_modules
+    links:
+      - database
+    depends_on:
+      - database
+  nginx:
+    restart: always
+    build: ./nginx
+    ports:
+      - '3050:80'
+    depends_on:
+      - api
+      - client
+      - database
 volumes:
-  seodata:
+  pgdata:
     
