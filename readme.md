@@ -4,6 +4,7 @@
 
 - PostgresSQL Database
 - Vue 3 Starter App Based On [CREATE-VUE](https://github.com/vuejs/create-vue) 
+- Vue Starter Enhanced by Personal Package Workflow ( Tailwind, Axios )
 - An Express Api boilerplate with specified dependecies
 - Nginx based Web Server
 - Github Actions to automate CI
