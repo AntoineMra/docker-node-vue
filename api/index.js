@@ -40,6 +40,8 @@ const pg_uri = process.env.POSTGRES_URI
 const db = process.env.POSTGRES_DB
 const sequelize = new Sequelize(`postgres://${user}:${pwd}@${pg_uri}/${db}`)
 
+console.log(sequelize)
+
 // Serve the app with swagger on / route
 const openapiSpecification = swaggerJsdoc(options)
 
